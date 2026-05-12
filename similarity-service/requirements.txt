@@ -1,0 +1,18 @@
+# Pinned so the metric values stay reproducible. Adjust only deliberately.
+fastapi==0.115.6
+uvicorn[standard]==0.34.0
+pydantic==2.10.4
+
+# Sentiment metric (TextBlob). textblob 0.19.0 requires nltk >= 3.9, which also
+# drives the lexical/structural metrics; the >= 3.9 corpora are "punkt_tab" /
+# "averaged_perceptron_tagger_eng".
+textblob==0.19.0
+nltk==3.9.1
+
+# Semantic metric — Sentence-BERT with sentence-transformers/roberta-base-nli-mean-tokens
+sentence-transformers==2.7.0
+# CPU-only torch keeps the image small-ish; install the CPU wheel explicitly in
+# the Dockerfile. Listed here without a build tag for plain `pip install`.
+torch==2.2.2
+# torch 2.2.x is built against NumPy 1.x.
+numpy==1.26.4

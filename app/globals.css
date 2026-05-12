@@ -1,0 +1,210 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* Updated theme with glassmorphism and iOS 26-inspired design */
+:root {
+  --background: hsl(220 20% 97%);
+  --foreground: hsl(222.2 84% 4.9%);
+  --card: hsl(0 0% 100% / 0.7);
+  --card-foreground: oklch(0.15 0 0);
+  --popover: hsl(0 0% 100% / 0.95);
+  --popover-foreground: oklch(0.15 0 0);
+  --primary: hsl(221.2 83.2% 53.3%);
+  --primary-foreground: oklch(0.99 0 0);
+  --secondary: hsl(210 40% 96% / 0.8);
+  --secondary-foreground: oklch(0.15 0 0);
+  --muted: hsl(210 40% 96% / 0.6);
+  --muted-foreground: oklch(0.5 0.01 250);
+  --accent: hsl(210 40% 96% / 0.8);
+  --accent-foreground: oklch(0.15 0 0);
+  --destructive: hsl(0 84.2% 60.2%);
+  --destructive-foreground: oklch(0.99 0 0);
+  --border: hsl(214.3 31.8% 91.4% / 0.5);
+  --input: hsl(214.3 31.8% 91.4% / 0.5);
+  --ring: hsl(221.2 83.2% 53.3%);
+  --chart-1: hsl(221.2 83.2% 53.3%);
+  --chart-2: hsl(212 95% 68%);
+  --chart-3: hsl(216 92% 60%);
+  --chart-4: hsl(210 98% 78%);
+  --chart-5: hsl(212 97% 87%);
+  --radius: 1.25rem;
+  --sidebar: hsl(0 0% 100% / 0.7);
+  --sidebar-foreground: oklch(0.15 0 0);
+  --sidebar-primary: oklch(0.55 0.22 250);
+  --sidebar-primary-foreground: oklch(0.99 0 0);
+  --sidebar-accent: oklch(0.94 0.01 250 / 0.5);
+  --sidebar-accent-foreground: oklch(0.15 0 0);
+  --sidebar-border: oklch(0.9 0.01 250 / 0.3);
+  --sidebar-ring: oklch(0.55 0.22 250);
+}
+
+@theme inline {
+  --font-sans: "Geist", "Geist Fallback";
+  --font-mono: "Geist Mono", "Geist Mono Fallback";
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Add glassmorphism utility classes */
+.glass {
+  backdrop-filter: blur(40px);
+  background-color: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.glass-strong {
+  backdrop-filter: blur(60px);
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Add Tiptap editor styles for headings, lists, and formatting */
+.tiptap {
+  @apply focus:outline-none;
+}
+
+/* Removed min-height rules to allow natural content growth and scrolling */
+/* The editor will now grow with its content and the parent overflow-auto will handle scrolling */
+
+/* Ensure the editor content wrapper fills available space */
+.ProseMirror-focused {
+  outline: none;
+}
+
+.tiptap h1 {
+  @apply text-3xl font-bold mb-4 mt-6;
+}
+
+.tiptap h2 {
+  @apply text-2xl font-bold mb-3 mt-5;
+}
+
+.tiptap h3 {
+  @apply text-xl font-bold mb-2 mt-4;
+}
+
+.tiptap p {
+  @apply mb-3 leading-relaxed;
+}
+
+.tiptap ul {
+  @apply list-disc list-outside ml-6 mb-3 space-y-1;
+}
+
+.tiptap ol {
+  @apply list-decimal list-outside ml-6 mb-3 space-y-1;
+}
+
+.tiptap li {
+  @apply leading-relaxed;
+}
+
+.tiptap strong {
+  @apply font-bold;
+}
+
+.tiptap em {
+  @apply italic;
+}
+
+.tiptap u {
+  @apply underline;
+}
+
+.tiptap code {
+  @apply bg-muted px-1.5 py-0.5 rounded text-sm font-mono;
+}
+
+/* Enhanced custom scrollbar styles to match glassmorphism design */
+/* Webkit browsers (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(210 40% 96% / 0.3);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(214.3 31.8% 85% / 0.6);
+  border-radius: 10px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(221.2 83.2% 53.3% / 0.5);
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: hsl(214.3 31.8% 85% / 0.6) hsl(210 40% 96% / 0.3);
+}
+
+/* Keep the thin scrollbar utility for specific cases */
+.scrollbar-thin::-webkit-scrollbar {
+  height: 4px;
+  width: 4px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  @apply bg-border rounded-full;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb:hover {
+  @apply bg-muted-foreground/30;
+}
